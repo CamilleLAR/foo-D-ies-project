@@ -40,16 +40,25 @@ Run `npm run migrate` in your **TERMINAL**, in the **project** folder (not your 
 
 ## App Info
 
-### Database Structure
+### Back End
 
-#### API
+#### | API
 
-All the food informatiion is provided via the Spoonacular API. See the spoonacular [file] (/services/spoonacular.js).
+All the food informatiion is provided via the Spoonacular API. 
 
-Two get methods were enough for us to create all the functionalities we were looking for as they provide ample details (food macros, calories, recipes etc).
+Two get methods were enough for us to create all the functionalities we were looking for as they provide ample details (food macros, calories, recipes etc). See the spoonacular [file](/services/spoonacular.js).
 
-All documentation provided on the Spoonacular website `https://spoonacular.com/food-api/docs`.
+Documentation provided on the [Spoonacular](https://spoonacular.com/food-api/docs) website.
 
-#### Tables
+#### | Database Tables
 
-To store the data, 3 tables were created: users, settings and calendar. See [schema] (/Database Schema.PNG) for more info.
+To store the data, 3 tables were created: user, settings and calendar. See [schema](/DatabaseSchema.PNG) for more info.
+
+The initial creation was done using SQL however all tables and routes were then modified when migrated to Sequelize. See migration [files](/migrations) for details.
+
+#### | Routes
+
+As the website requires users to register and then log in to access functionalities, a "UserShouldBeLoggedIn" guard was created and reused for all the relevant routes.
+Then the routes were created separately depending on their use: API routes, settings routes, authorisation routes and recipes routes.
+
+### Front End
