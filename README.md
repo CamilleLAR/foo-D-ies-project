@@ -1,16 +1,23 @@
 # BusyBytes
 
+BusyBytes is the ultimate app designed specifically for tech enthusiasts like you, offering a seamless solution to streamline your meal planning, grocery shopping and cooking processes. 
+With BusyBytes, you can indulge on your coding passion while enjoying delicious, hassle-free meals.
+
 ## Setup
 
-### Dependencies
+### 1 Dependencies
 
-Run `npm install` in the project folder to install dependencies related to Express (the server).
+- Run `npm install` in the project folder to install dependencies related to Express (the server).
 
-`cd client` and run `npm install` install dependencies related to React (the client).
+- Then `cd client` and run `npm install` to install dependencies related to React (the client).
 
-### Database Prep
+### 2 Database Prep
 
-Create `.env` file in project directory and add
+### .env File
+
+- Create a `.env` file in project directory to hold sensitive information such as API keys, database credentials, and other environment-specific variables. It's crucial to keep this information separate from your codebase for security reasons. In our case, we will use the .env file to store the credentials needed to access your MySQL database.
+
+- Add the following lines, replacing the placeholders with your actual database credentials:
 
 ```
   DB_HOST=localhost
@@ -20,23 +27,52 @@ Create `.env` file in project directory and add
   SUPER_SECRET=WHATEVER YOU WANT
 ```
 
-(replace `YOUR_PASSWORD` with your actual password)
+*make sure to replace "YOUR PASSWORD" with your actual MySQL root password*
 
-Type `mysql -u root -p` to access the MySQL CLI using your password.
+### Create the Database
 
-In the MySQL CLI, type `create database mealprepapp;` to create a database in MySQL.
+Before your app can store and retrieve data, you need to set up a database. We'll be using MySQL as our database management system.
 
-Run the following in the MySQL CLI: `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'YOUR_PASSWORD';` (replace `YOUR_PASSWORD` with your actual password)
+- Open your MySQL command-line interface by entering `mysql -u root -p` in your terminal. You'll be prompted to enter your MySQL root password.
 
-Run `npm run migrate` in your **TERMINAL**, in the **project** folder (not your MySQL CLI! Open a new terminal window for this). This will create a table called 'items' in your database.
+- Once you're in the MySQL CLI, create a new database for your app by entering the following command:
 
-### Run Your Development Servers
+```
+create database mealprepapp;
+```
 
-- Run `npm start` in project directory to start the Express server on port 4000
+This command creates a database named mealprepapp that your app will use to store its data.
+
+- After creating the database, we need to update the user authentication method for your MySQL server to allow the app to connect. Enter the following command in the MySQL CLI, replacing YOUR_PASSWORD with your actual MySQL root password: 
+
+```
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'YOUR_PASSWORD';
+```
+
+This step is necessary to ensure compatibility between the app and the MySQL server.
+
+### Run Migration
+
+Migrations are a way to manage your database schema and keep it in sync with your application's codebase. We'll be using migrations to create the necessary tables for your app.
+
+- In your terminal, navigate to the project directory where your app is located.
+
+- Run the following command to execute the migrations and create the required tables:
+
+```
+npm run migrate
+```
+This command will create a table named 'items' in your mealprepapp database.
+
+With these steps completed, your database will be properly set up, and your app will be able to store and retrieve data seamlessly.
+
+### 3 Run Your Development Servers
+
+- Run `npm start` in your project directory to start the Express server on port 4000.
 - `cd client` and run `npm run dev` to start client server in development mode with hot reloading in port 5173.
 - Client is configured so all API calls will be proxied to port 4000 for a smoother development experience. Yay!
-- You can test your client app in `http://localhost:5173`
-- You can test your API in `http://localhost:4000/api`
+- You can test your client app in `http://localhost:5173`.
+- You can test your API in `http://localhost:4000/api`.
 
 ## App Info
 
@@ -44,11 +80,33 @@ Run `npm run migrate` in your **TERMINAL**, in the **project** folder (not your 
 
 #### | API
 
-All the food informatiion is provided via the Spoonacular API. 
+The BusyBytes app relies on the Spoonacular API to provide comprehensive food-related information and functionalities. The Spoonacular API is a powerful tool that offers an array of data related to recipes, meal planning, nutrition, and more. This section outlines how the app integrates with the Spoonacular API to enhance its capabilities.
 
-Two get methods were enough for us to create all the functionalities we were looking for as they provide ample details (food macros, calories, recipes etc). See the spoonacular [file](/services/spoonacular.js).
+**What is the Spoonacular API?**
 
-Documentation provided on the [Spoonacular](https://spoonacular.com/food-api/docs) website.
+The Spoonacular API is a food and recipe-related API that offers a wide range of data and features related to cooking, meal planning, and nutrition. It serves as a valuable resource for developers looking to incorporate food-related content into their applications. With the Spoonacular API, you can access information about ingredients, recipes, nutrition details, meal plans, and more.
+
+**How BusyBytes Uses the Spoonacular API**
+
+In the BusyBytes app, we leverage the Spoonacular API to enhance the user experience and provide valuable features. Here are some key functionalities powered by the Spoonacular API:
+
+* Recipe Information: The Spoonacular API allows us to fetch detailed information about various recipes, including ingredients, preparation instructions, cooking times, and more.
+
+* Nutritional Data: With the help of the Spoonacular API, users can access comprehensive nutritional information for different ingredients and recipes. This data is essential for users who are conscious of their dietary choices.
+
+* Meal Planning: BusyBytes utilises the Spoonacular API to assist users in planning their meals. Users can search for recipes based on dietary preferences, cuisines, and more, making it easier to create personalised meal plans.
+
+* Search and Filters: The Spoonacular API's search capabilities enable users to search for specific recipes or ingredients based on keywords. Filters such as dietary restrictions, meal types, and more help users find suitable options.
+
+* Recipe Recommendations: By analyzing user preferences and behavior, BusyBytes can provide recipe recommendations and suggestions using the Spoonacular API's data.
+
+**Accessing the Spoonacular API**
+
+To access the Spoonacular API, you'll need to sign up for an API key from their official website. The API key acts as an authentication token, allowing your app to communicate with the Spoonacular servers and retrieve the data you need.
+
+For more detailed information on how to interact with the Spoonacular API and the available endpoints, refer to the [Spoonacular documentation](https://spoonacular.com/food-api/docs).
+
+By integrating the Spoonacular API, BusyBytes enriches its capabilities, providing users with a seamless and informative culinary experience.
 
 #### | Database Tables
 
