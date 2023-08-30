@@ -28,13 +28,13 @@ With BusyBytes, you can indulge on your coding passion while enjoying delicious,
 
 ## Setup
 
-### 1. Dependencies
+### Dependencies
 
 - Run `npm install` in the project folder to install dependencies related to Express (the server).
 
 - Then `cd client` and run `npm install` to install dependencies related to React (the client).
 
-### 2. Database Prep
+### Database Prep
 
 #### | .env File
 
@@ -90,7 +90,7 @@ This command will create a table named 'items' in your mealprepapp database.
 
 With these steps completed, your database will be properly set up, and your app will be able to store and retrieve data seamlessly.
 
-### 3. Run Your Development Servers
+### Run Your Development Servers
 
 - Run `npm start` in your project directory to start the Express server on port 4000.
 
@@ -106,7 +106,7 @@ With these steps completed, your database will be properly set up, and your app 
 
 ### Back End
 
-#### | API
+#### API
 
 The BusyBytes app relies on the Spoonacular API to provide comprehensive food-related information and functionalities. The Spoonacular API is a powerful tool that offers an array of data related to recipes, meal planning, nutrition, and more. This section outlines how the app integrates with the Spoonacular API to enhance its capabilities.
 
@@ -136,7 +136,7 @@ For more detailed information on how to interact with the Spoonacular API and th
 
 By integrating the Spoonacular API, BusyBytes enriches its capabilities, providing users with a seamless and informative culinary experience.
 
-#### | Database Tables
+#### Database Tables
 
 In BusyBytes, data is organised and stored in three main tables within the MySQL database. Each table serves a specific purpose and holds essential information to power the functionalities of the app.
 
@@ -158,7 +158,7 @@ For a visual representation of the database schema, refer to the [schema diagram
 
 The initial creation of these tables was done using SQL, and they were later modified when migrated to Sequelize. For more details on the changes, you can explore the [migration files](/migrations).
 
-#### | Routes
+#### Routes
 
 The BusyBytes app utilises various routes to handle different functionalities. This section provides an overview of the different types of routes used in the app, including API routes, settings routes, authorization routes, and recipe routes.
 
@@ -182,13 +182,13 @@ By categorising routes into these distinct types, BusyBytes effectively organise
 
 ### Front End
 
-#### | Landing page
+#### Landing page
 
 The first page users can access is the landing page. It provides an overview of the application and allows the user to register or log in to access their information.
 
 Note: this page welcomes users with a cute robot cook custom designed by one of the project's original team member.
 
-#### | User Flow
+#### User Flow
 
 Once registered and logged in, the user has access to a wide variety of pages and actions.
 The top bar displays the BusyBytes name, that is also a link to the profile page, and the log out button.
