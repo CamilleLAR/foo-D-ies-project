@@ -87,12 +87,10 @@ With these steps completed, your database will be properly set up, and your app 
 
 The BusyBytes app relies on the Spoonacular API to provide comprehensive food-related information and functionalities. The Spoonacular API is a powerful tool that offers an array of data related to recipes, meal planning, nutrition, and more. This section outlines how the app integrates with the Spoonacular API to enhance its capabilities.
 
-  **What is the Spoonacular API?**
-
+**What is the Spoonacular API?**
 The Spoonacular API is a food and recipe-related API that offers a wide range of data and features related to cooking, meal planning, and nutrition. It serves as a valuable resource for developers looking to incorporate food-related content into their applications. With the Spoonacular API, you can access information about ingredients, recipes, nutrition details, meal plans, and more.
 
-  **How BusyBytes Uses the Spoonacular API**
-
+**How BusyBytes Uses the Spoonacular API**
 In the BusyBytes app, we leverage the Spoonacular API to enhance the user experience and provide valuable features. Here are some key functionalities powered by the Spoonacular API:
 
 * Recipe Information: The Spoonacular API allows us to fetch detailed information about various recipes, including ingredients, preparation instructions, cooking times, and more.
@@ -105,8 +103,7 @@ In the BusyBytes app, we leverage the Spoonacular API to enhance the user experi
 
 * Recipe Recommendations: By analysing user preferences and behaviour, BusyBytes can provide recipe recommendations and suggestions using the Spoonacular API's data.
 
-  **Accessing the Spoonacular API**
-
+**Accessing the Spoonacular API**
 To access the Spoonacular API, you'll need to sign up for an API key from their official website. The API key acts as an authentication token, allowing your app to communicate with the Spoonacular servers and retrieve the data you need.
 
 For more detailed information on how to interact with the Spoonacular API and the available endpoints, refer to the [Spoonacular documentation](https://spoonacular.com/food-api/docs).
@@ -117,16 +114,13 @@ By integrating the Spoonacular API, BusyBytes enriches its capabilities, providi
 
 In BusyBytes, data is organised and stored in three main tables within the MySQL database. Each table serves a specific purpose and holds essential information to power the functionalities of the app.
 
-  **User Table**
-
+**User Table**
 The user table is where user-related information is stored. This table holds data such as user IDs, usernames, email addresses, and profile pictures. It is crucial for user authentication, registration, and personalization. Users' dietary preferences and saved recipes are associated with their respective entries in the user table.
 
-  **Settings Table**
-
+**Settings Table**
 The settings table stores individual user preferences and restrictions related to dietary choices. This includes information such as preferred diets (e.g., vegetarian, vegan), intolerances, and ingredients to exclude. These settings serve as filters when users search for recipes, ensuring that the results align with their dietary requirements.
 
-  **Calendar Table**
-
+**Calendar Table**
 The calendar table is responsible for holding users' meal plans and scheduled recipes. This table contains information about the date, meal type (e.g., breakfast, lunch), and the specific recipe chosen for that meal. It enables users to plan their meals ahead of time and track their consumption over different weeks.
 
 Each table serves a unique role in facilitating the app's functionalities, providing a structured and organized way to manage user data, preferences, and interactions with recipes.
@@ -137,8 +131,21 @@ The initial creation of these tables was done using SQL, and they were later mod
 
 #### | Routes
 
-As the website requires users to register and then log in to access functionalities, a "UserShouldBeLoggedIn" guard was created and reused for all the relevant routes.
-Then the routes were created separately depending on their use: API routes, settings routes, authorisation routes and recipes routes.
+The BusyBytes app utilises various routes to handle different functionalities. This section provides an overview of the different types of routes used in the app, including API routes, settings routes, authorization routes, and recipe routes.
+
+**API Routes**
+API routes are responsible for communication between the client and the server, facilitating data retrieval and storage. These routes handle requests and responses related to recipes, meal plans, user preferences, and more. API routes are essential for creating a seamless user experience and ensuring data consistency.
+
+**Settings Routes**
+Settings routes are focused on managing user preferences and dietary restrictions. These routes allow users to customize their experience by specifying their dietary choices, intolerances, and ingredient exclusions. The information stored through settings routes is used to tailor recipe recommendations and search results to the user's preferences.
+
+**Authorization Routes**
+Authorization routes play a crucial role in ensuring secure access to the app's features. These routes handle user registration, login, authentication and user details. By enforcing user authentication, authorization routes help protect user data and ensure that only authorised users can access specific functionalities.
+
+**Recipe Routes**
+Recipe routes are at the core of the app's recipe-related features. These routes enable users to search for recipes, view detailed recipe information, and manage their favourites. Additionally, recipe routes facilitate the creation and management of meal plans by allowing users to add recipes to their calendars.
+
+By categorising routes into these distinct types, BusyBytes effectively organises its functionalities and enhances the app's maintainability and scalability.
 
 ### Front End
 
@@ -153,23 +160,20 @@ Note: this page welcomes users with a cute robot cook custom designed by one of 
 Once registered and logged in, the user has access to a wide variety of pages and actions.
 The top bar displays the BusyBytes name, that is also a link to the profile page, and the log out button.
 
-##### > Profile page
-
+**Profile page**
 Upon log in, this is where users first land.
 This page displays the user information: profile picture, user name, email, user favourites and preferences.
  
 On that same page the user can modify every piece of information displayed, including the ones provided during registration (name and email). 
 
-##### > Calendar page
-
+**Calendar page**
 Custom made, this calendar allows the user to naviguate through different weeks (past and future) to see any meal plan already made.
 
 It displays the date and day as well as the different meal types proposed: breakfast, elevensies, lunch, afternoon tea and dinner.
 
 From this page, user can access added meals' recipes, add tried meals to the favourites and remove meals from calendar.
 
-##### > New Meal Plan
-
+**New Meal Plan**
 This page is the heart of the app, where users can look for recipes to create their meal plans. The search option has an extensive list options the user can populate to narrow down their search.
 The filters are organised in categories:
 
@@ -185,24 +189,21 @@ Then the "Get Recipes" button fetched the recipes matching the search parameters
 
 Clicking on the meal picture will send the user to the recipe page for that meal.
 
-##### > Recipe Repo
-
+**Recipe Repo**
 This is the favourites page, any meal added as a favourite will appear on that page.
 
 This page will appear empty by default. If it is the case the user will be given the option to search for meals clicking on the "Search Recipes" button that will redirect them to the "New Meal Plan" page.
 
 The user can remove a meal from the favourites using the cross button. They can also access the recipe page by clicking on the pictures.
 
-##### > Recipe page
-
+**Recipe page**
 The recipes cannot be accessed from the menu tabs of the website, as they are different for each meal, they can be accessed through the meal's picture from other pages (calendar, new meal plan, recipe repo).
 
 The recipe page will show the meal name and type, the ingredients list, cooking instructions and nutritional information.
 
 From this page, the user can populate their shopping list should they need to purchase any of the ingredients needed simply by ticking the box for the missing ingredient. 
 
-##### > Shopping List
-
+**Shopping List**
 The shopping list page will appear empty by default. If it is the case the user will be given the option to search for meals clicking on the "Search for Recipes" button that will redirect them to the "New Meal Plan" page.
 
 If ingredients have been added, the list will display them grouped by aisle. The ingredient name and quantity will be provided as well as per the recipe they were added from.
@@ -210,8 +211,7 @@ The list can be ticked as the user purchases the items, clicking on the row will
 
 Once the user no longer need that shopping list, they can delete it with the "Delete Shopping List" button.
 
-##### > Settings
-
+**Settings**
 This page allows the user to save their food restrictions. Anything added will be a pre-set filter on all new meal plan searches.
 
 The user can add their diet(s), their intolerance(s) and any food they simply dislike as ingredients to exclude. One or all fields can be populated before clicking on the "Add Dietary Preferences" button to save the changes.
