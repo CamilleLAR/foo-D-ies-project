@@ -1,6 +1,6 @@
 # BusyBytes
 
-BusyBytes is the ultimate app designed specifically for tech enthusiasts like you, offering a seamless solution to streamline your meal planning, grocery shopping and cooking processes. 
+BusyBytes is the ultimate app designed specifically for tech enthusiasts like you, offering a seamless solution to streamline your meal planning, grocery shopping and cooking processes.
 With BusyBytes, you can indulge on your coding passion while enjoying delicious, hassle-free meals.
 
 ## Setup
@@ -43,7 +43,7 @@ create database mealprepapp;
 
 This command creates a database named mealprepapp that your app will use to store its data.
 
-- After creating the database, we need to update the user authentication method for your MySQL server to allow the app to connect. Enter the following command in the MySQL CLI, replacing YOUR_PASSWORD with your actual MySQL root password: 
+- After creating the database, we need to update the user authentication method for your MySQL server to allow the app to connect. Enter the following command in the MySQL CLI, replacing YOUR_PASSWORD with your actual MySQL root password:
 
 ```
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'YOUR_PASSWORD';
@@ -62,6 +62,7 @@ Migrations are a way to manage your database schema and keep it in sync with you
 ```
 npm run migrate
 ```
+
 This command will create a table named 'items' in your mealprepapp database.
 
 With these steps completed, your database will be properly set up, and your app will be able to store and retrieve data seamlessly.
@@ -69,9 +70,13 @@ With these steps completed, your database will be properly set up, and your app 
 ### 3 Run Your Development Servers
 
 - Run `npm start` in your project directory to start the Express server on port 4000.
+
 - `cd client` and run `npm run dev` to start client server in development mode with hot reloading in port 5173.
+
 - Client is configured so all API calls will be proxied to port 4000 for a smoother development experience. Yay!
+
 - You can test your client app in `http://localhost:5173`.
+
 - You can test your API in `http://localhost:4000/api`.
 
 ## App Info
@@ -82,11 +87,11 @@ With these steps completed, your database will be properly set up, and your app 
 
 The BusyBytes app relies on the Spoonacular API to provide comprehensive food-related information and functionalities. The Spoonacular API is a powerful tool that offers an array of data related to recipes, meal planning, nutrition, and more. This section outlines how the app integrates with the Spoonacular API to enhance its capabilities.
 
-**What is the Spoonacular API?**
+  **What is the Spoonacular API?**
 
 The Spoonacular API is a food and recipe-related API that offers a wide range of data and features related to cooking, meal planning, and nutrition. It serves as a valuable resource for developers looking to incorporate food-related content into their applications. With the Spoonacular API, you can access information about ingredients, recipes, nutrition details, meal plans, and more.
 
-**How BusyBytes Uses the Spoonacular API**
+  **How BusyBytes Uses the Spoonacular API**
 
 In the BusyBytes app, we leverage the Spoonacular API to enhance the user experience and provide valuable features. Here are some key functionalities powered by the Spoonacular API:
 
@@ -98,9 +103,9 @@ In the BusyBytes app, we leverage the Spoonacular API to enhance the user experi
 
 * Search and Filters: The Spoonacular API's search capabilities enable users to search for specific recipes or ingredients based on keywords. Filters such as dietary restrictions, meal types, and more help users find suitable options.
 
-* Recipe Recommendations: By analyzing user preferences and behavior, BusyBytes can provide recipe recommendations and suggestions using the Spoonacular API's data.
+* Recipe Recommendations: By analysing user preferences and behaviour, BusyBytes can provide recipe recommendations and suggestions using the Spoonacular API's data.
 
-**Accessing the Spoonacular API**
+  **Accessing the Spoonacular API**
 
 To access the Spoonacular API, you'll need to sign up for an API key from their official website. The API key acts as an authentication token, allowing your app to communicate with the Spoonacular servers and retrieve the data you need.
 
@@ -110,9 +115,25 @@ By integrating the Spoonacular API, BusyBytes enriches its capabilities, providi
 
 #### | Database Tables
 
-To store the data, 3 tables were created: user, settings and calendar. See [schema](/DatabaseSchema.PNG) for details.
+In BusyBytes, data is organised and stored in three main tables within the MySQL database. Each table serves a specific purpose and holds essential information to power the functionalities of the app.
 
-The initial creation was done using SQL however all tables and routes were then modified when migrated to Sequelize. See migration [files](/migrations) for details.
+  **User Table**
+
+The user table is where user-related information is stored. This table holds data such as user IDs, usernames, email addresses, and profile pictures. It is crucial for user authentication, registration, and personalization. Users' dietary preferences and saved recipes are associated with their respective entries in the user table.
+
+  **Settings Table**
+
+The settings table stores individual user preferences and restrictions related to dietary choices. This includes information such as preferred diets (e.g., vegetarian, vegan), intolerances, and ingredients to exclude. These settings serve as filters when users search for recipes, ensuring that the results align with their dietary requirements.
+
+  **Calendar Table**
+
+The calendar table is responsible for holding users' meal plans and scheduled recipes. This table contains information about the date, meal type (e.g., breakfast, lunch), and the specific recipe chosen for that meal. It enables users to plan their meals ahead of time and track their consumption over different weeks.
+
+Each table serves a unique role in facilitating the app's functionalities, providing a structured and organized way to manage user data, preferences, and interactions with recipes.
+
+For a visual representation of the database schema, refer to the [schema diagram](/DatabaseSchema.PNG).
+
+The initial creation of these tables was done using SQL, and they were later modified when migrated to Sequelize. For more details on the changes, you can explore the [migration files](/migrations).
 
 #### | Routes
 
