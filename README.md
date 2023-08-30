@@ -39,3 +39,17 @@ Run `npm run migrate` in your **TERMINAL**, in the **project** folder (not your 
 - You can test your API in `http://localhost:4000/api`
 
 ## App Info
+
+### Database Structure
+
+#### API
+
+All the food informatiion is provided via the Spoonacular API. See the spoonacular [file] (/services/spoonacular.js).
+
+Two get methods were enough for us to create all the functionalities we were looking for as they provide ample details (food macros, calories, recipes etc).
+
+All documentation provided on the Spoonacular website `https://spoonacular.com/food-api/docs`.
+
+#### Tables
+
+To store the data, 3 tables were created: users, settings and calendar. See [schema] (/Database Schema.PNG) for more info.
